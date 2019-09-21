@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>WEATHER INFO</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+    <div class="header">
+        <h1 class="text-center"> WEATHER INFO</h1>
+        <h4 id="MyClockDisplay" class="clock" onload="showTime()"></h4>
+        <h4 id="todayDate" class="clock" onload="showTime()"></h4>
+        <div class="input-group mb-3">
+            <input type="search" class="form-control" placeholder="ENTER A CITY NAME" id="city" onsearch="getdata()">
+            <div class="input-group-append">
+                <span class="input-group-text" onclick="getdata()" style="background-color: red"><i class="fa fa-search" aria-hidden="true"></i></span>
+            </div>
+        </div>
+    </div>
+    <div class="card-deck" id="cardDeck">
+        <div class="card bg-primary">
+            <div class="card-header text-center">Temperature</div>
+            <div class="card-body text-center">
+                <div class="spinner-border text-light" id="bar"></div>
+                <p class="card-text" id="temp"></p>
+            </div>
+        </div>
+        <div class="card bg-warning">
+            <div class="card-header text-center">wind & humidity</div>
+            <div class="card-body text-center">
+                <div class="spinner-border text-light" id="bar2"></div>
+                <p class="card-text" id="wind"></p>
+                <p class="card-text" id="humidity"></p>
+            </div>
+        </div>
+        <div class="card bg-success">
+            <div class="card-header text-center">weather Description</div>
+            <div class="card-body text-center">
+                <div class="spinner-border text-light" id="bar3"></div>
+                <p class="card-text" id="weather"></p>
+            </div>
+        </div>
+        <div class="card bg-danger">
+            <div class="card-header text-center">visibility & Cloudiness</div>
+            <div class="card-body text-center">
+                <div class="spinner-border text-light" id="bar4"></div>
+                <p class="card-text" id="visibility"></p>
+                <p class="card-text" id="Cloudiness"></p>
+            </div>
+        </div>
+    </div>
+    <div id="msg" style="display: none;">
+        <div class="card bg-danger text-white">
+            <div class="card-body text-center"> CITY NOT FOUND !!!</div>
+        </div>
+    </div>
+
+
+
+
+
+    <script src="main.js"></script>
+    <script>
+        function showTime() {
+            var date = new Date();
+            var h = date.getHours(); // 0 - 23
+            var m = date.getMinutes(); // 0 - 59
+            var s = date.getSeconds(); // 0 - 59
+            var y = date.getFullYear();
+            var month = date.getMonth();
+            month = month + 1;
+            var d = date.getDate();
+            var session = "AM";
+
+            if (h == 0) {
+                h = 12;
+            }
+
+            if (h > 12) {
+                h = h - 12;
+                session = "PM";
+            }
+
+            h = (h < 10) ? "0" + h : h;
+            m = (m < 10) ? "0" + m : m;
+            s = (s < 10) ? "0" + s : s;
+            month = (month < 10) ? "0" + month : month;
+            d = (d < 10) ? "0" + d : d;
+
+            var time = h + ":" + m + ":" + s + " " + session;
+            var date = y + "-" + month + "-" + d;
+            document.getElementById("MyClockDisplay").innerHTML = time;
+            document.getElementById("todayDate").innerHTML = date;
+
+
+            setTimeout(showTime, 1000);
+
+        }
+        showTime();
+    </script>
+</body>
+
+</html>

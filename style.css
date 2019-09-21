@@ -1,0 +1,48 @@
+body {
+    max-width: 100%;
+    background: url(imagewe.jpg) no-repeat center center fixed;
+    background-size: cover;
+}
+
+.header {
+    text-align: center;
+    margin-left: 25%;
+    margin-right: 25%;
+    color: white;
+}
+
+.clock {
+    font-family: 'Orbitron', sans-serif;
+    color: #66ff99;
+    font-size: 5vw;
+
+    margin: 0 auto;
+}
+
+.card-deck {
+    text-transform: uppercase;
+    color: #FFF;
+}
+
+#temp {
+    color: yellow;
+}
+
+#wind,
+#humidity {
+    color: black;
+}
+
+#weather {
+    color: yellow;
+}
+
+#visibility,
+#Cloudiness {
+    color: black;
+}
+
+#msg {
+    margin-left: 25%;
+    margin-right: 25%;
+}
